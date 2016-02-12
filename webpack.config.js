@@ -19,7 +19,7 @@ module.exports = {
   //   aggregateTimeout: 100
   // },
 
-  devtool: "cheap-inline-module-source-map",
+  devtool: "source-map",
 
   resolve: {
     modulesDirectories: ['node_modules'],

@@ -1,9 +1,10 @@
+"use strict";
+
 import $ from 'jquery';
 
-import bc from './big-calendar';
-import sc from './small-calendar';
-import ep from './event-plugin';
-
+import { BigCalendar } from './big-calendar';
+import { SmallCalendar } from './small-calendar';
+import { EventPlugin } from './event-plugin';
 
 let options = {
     period: 'week',
@@ -12,6 +13,8 @@ let options = {
     id:     'big-calendar'
 }
 
-let bigCalendar = new BigCalendar.Calendar( options );
+let bigCalendar = new BigCalendar( options );
 
-let events = new EventPlugin.Events();
+let smallCalendar = new SmallCalendar();
+
+let events = new EventPlugin();
