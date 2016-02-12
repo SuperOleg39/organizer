@@ -1,4 +1,4 @@
-import $ from 'jquery';
+
 
 import bc from './big-calendar';
 import sc from './small-calendar';
