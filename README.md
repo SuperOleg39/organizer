@@ -1,0 +1,31 @@
+# Organizer
+
+[![Build Status](https://travis-ci.org/SuperOleg39/organizer.svg?branch=master)](https://travis-ci.org/SuperOleg39/organizer)
+
+Install project:
+```
+git clone https://github.com/SuperOleg39/organizer.git
+npm install
+gulp build
+```
+
+Watch changes:
+```
+gulp webserver
+```
+
+Create a server:
+```
+gulp webserver
+```
+
+Clean build project:
+```
+gulp clean
+```
+
+
+Or all together
+```
+gulp
+```

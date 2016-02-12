@@ -1,0 +1,143 @@
+.big-calendar
+    position relative
+    table
+        position relative
+        width 100%
+        table-layout fixed
+    td
+        position relative
+        width 100%
+    .week-table, .workweek-table
+        tr
+            line-height 22px
+            height 22px
+            border-bottom 1px solid #d9dde2
+        tr:nth-child(even)
+            border-bottom 1px dashed #d9dde2
+        tr:first-child
+            td
+                border-left 1px solid transparent
+                border-right 1px solid transparent
+                padding 0 10px
+                font-size 12px
+            .pull-left
+                color #2a2a2a
+            .pull-right
+                color #6a6b6b
+        td
+            border-left 1px solid #d9dde2
+            border-right 1px solid #d9dde2
+            &.title-current-day
+                position relative
+                .pull-left, .pull-right
+                    color #2697e7
+                &::after
+                    content ''
+                    display block
+                    position absolute
+                    width 100%
+                    background-color #2697e7
+                    height 1px
+                    bottom 2px
+                    left 0
+            &.current-day
+                background-color #f6f6f6
+                position relative
+        td:first-child
+            position relative
+            width 50px
+            border-left 1px solid transparent
+            border-bottom 1px solid transparent
+            font-size 10px
+            color #6a6b6b
+        td:not(:first-child)
+            width 14.285%
+        .hour-td
+            position relative
+            span
+                text-align center
+                display block
+                position absolute
+                top -50%
+                width 100%
+        .time-arrow
+            border-left   5px solid #ff0000
+            border-top    3px solid transparent
+            border-bottom 3px solid transparent
+            position absolute
+            left -5px
+            top 0
+            transform translateY(-50%)
+        .time-line
+            background-color #ff0000
+            width 100%
+            height 1px
+            position absolute
+            left 0
+            top 0
+            transform translateY(-50%)
+    .workweek-table
+        td:not(:first-child)
+            width 20%
+    .month-table
+        tr:first-child
+            td
+                border-left 1px solid transparent
+                border-right 1px solid transparent
+                color #6a6b6b
+                text-align center
+                padding 10px 5px
+                &::after
+                    padding-bottom 0
+        td
+            width 14.285%
+            position relative
+            padding 15px
+            text-align right
+            border 1px solid #dae0e6
+            color #2a2a2a
+            font-weight 700
+            &::after
+                content ''
+                display block
+                padding-bottom calc(100% - 26px)
+            &:first-child
+                border-left 1px solid transparent
+            &:last-child
+                border-right 1px solid transparent
+        .other-month
+           color #dae0e6
+        .date-wrap
+            display inline-block
+            width 26px
+            height 26px
+            line-height 26px
+            text-align center
+            border-radius 50%
+        .current-day
+            .date-wrap
+                background-color #4044b6
+                color white
+
+.week-container, .workweek-container
+    padding 10px 5px
+.month-container
+    padding 10px 50px 10px 10px
+
+.big-calendar-layout
+    position absolute
+    left    5px
+    right   5px
+    top     10px
+    bottom  10px
+    width auto
+    height auto
+    margin auto
+
+
+.month-container
+    .big-calendar-layout
+        left    10px
+        right   50px
+        top     10px
+        bottom  10px

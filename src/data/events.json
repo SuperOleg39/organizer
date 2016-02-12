@@ -1,0 +1,40 @@
+{
+    "events" :[
+        {
+            "title"         : "Событие 1",
+            "startHour"     : 1,
+            "startMinutes"  : "00",
+            "length"        : 1.5,
+            "day"           : 1,
+            "date"          : 8,
+            "month"         : 1
+        },
+        {
+            "title"         : "Событие 2",
+            "startHour"     : 4,
+            "startMinutes"  : "00",
+            "length"        : 1,
+            "day"           : 3,
+            "date"          : 10,
+            "month"         : 1
+        },
+        {
+            "title"         : "Событие 3",
+            "startHour"     : 7,
+            "startMinutes"  : "00",
+            "length"        : 1.5,
+            "day"           : 1,
+            "date"          : 8,
+            "month"         : 1
+        },
+        {
+            "title"         : "Событие 4",
+            "startHour"     : 10,
+            "startMinutes"  : 30,
+            "length"        : 2,
+            "day"           : 5,
+            "date"          : 12,
+            "month"         : 1
+        }
+    ]
+}

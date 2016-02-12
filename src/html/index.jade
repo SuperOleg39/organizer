@@ -1,0 +1,69 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    title Адресная книга
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='icon', href='favicon.ico')
+    link(rel='stylesheet', href='css/style.css')
+  body.clearfix
+    // WINDOW
+    .window
+
+      // header
+      .header.clearfix
+        .window-icon
+        .buttons.clearfix
+          .minimize
+          .expand
+          .close
+        .window-name Календарь
+      // /header
+
+      // main
+      .main
+
+        // sidebar
+        .sidebar
+
+
+          // SIDE CONTENT
+
+          // small calendar
+          include small-calendar.jade
+          // /small calendar
+
+          // modules navigation
+          include modules-nav.jade
+          // /modules navigation
+
+          // calendar list
+          include calendar-list.jade
+          // /calendar list
+
+          // /SIDE CONTENT
+
+
+        // /sidebar
+
+
+        // content
+        .content
+
+
+          // MAIN CONTENT
+
+          // big calendar
+          include big-calendar.jade
+          // /big calendar
+
+          // /MAIN CONTENT
+
+
+        // /content
+
+      // /main
+    // /WINDOW
+
+    script(src="js/bundle.js")
