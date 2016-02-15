@@ -102,7 +102,7 @@ function newEventData(e) {
     return data;
 }
 
-function createEvent( data ) {
+export function createEvent( data ) {
     let event = document.createElement( 'div' );
 
     event.className = 'event-container';
