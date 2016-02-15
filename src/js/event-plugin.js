@@ -1,5 +1,9 @@
 "use strict";
 
+export function sum(a, b) {
+    return a + b;
+}
+
 export class EventPlugin {
            constructor() {
                initialization();
@@ -61,13 +65,16 @@ function foreachEvents( data ) {
     for (let i = 0; i < data.length; i++) {
         event   = createEvent( data[ i ] || data );
         parent  = getEventParent( data[ i ] || data );
-        options = getEventOptions( parent );
 
-        event.parent = parent;
+        if ( !!parent ) {
+            options = getEventOptions( parent );
 
-        addEventOptions( event, options );
-        events.push( event );
-        layout.appendChild( event );
+            event.parent = parent;
+
+            addEventOptions( event, options );
+            events.push( event );
+            layout.appendChild( event );
+        }
     }
 
     dragEvent( event, parent );
@@ -288,6 +295,8 @@ function resizeEvent( elements, parent ) {
     let resizeObject = {};
     let element;
     let ancor;
+
+    if ( elements.length === 0 ) return;
 
     for ( let i = 0; i < elements.length; i++ ) {
         ancor = document.createElement( 'div' );

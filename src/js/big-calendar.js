@@ -23,6 +23,10 @@ const $column = Symbol( "Calendar::Column" );
 const $id     = Symbol( "Calendar::Id" );
 /** * @type {Symbol} - Private const result */
 const $result = Symbol( "Calendar::Result" );
+/** * @type {Symbol} - Private const parent */
+const $parent = Symbol( "Calendar::Parent" );
+/** * @type {Symbol} - Private const parent */
+const $titleType = Symbol( "Calendar::TitleType" );
 
 
 /** Class create a Calendar */
@@ -39,12 +43,16 @@ export class BigCalendar {
         this[ $column ] = 'hour';
         this[ $id ]     = 'calendar';
         this[ $result ] = [];
+        this[ $parent ] = 'calendar';
+        this[ $titleType ] = 'long';
 
         this.period = options.period;
         this.line   = options.line;
         this.column = options.column;
         this.id     = options.id;
         this.result = switchPeriod.call( this );
+        this.parent = options.parent;
+        this.titleType = options.titleType;
 
         this.titleList = getTitleList.call( this );
         this.hourList  = getHourList();
@@ -86,6 +94,20 @@ export class BigCalendar {
      */
     get result() {
         return this[ $result ];
+    }
+    /**
+     * Get the parent value
+     * @return {string} id - calendar table parent
+     */
+    get parent() {
+        return this[ $parent ];
+    }
+    /**
+     * Get the titleType
+     * @return {string} id - calendar table titleType
+     */
+    get titleType() {
+        return this[ $titleType ];
     }
 
     /**
@@ -138,6 +160,26 @@ export class BigCalendar {
             this[ $result ] = value;
         }
     }
+    /**
+     * Set the id value
+     * @param  {string} value - new value from constructor options
+     * @return {string} id - calendar table id
+     */
+    set parent( value ) {
+        if ( value ) {
+            this[ $parent ] = value;
+        }
+    }
+    /**
+     * Set the id value
+     * @param  {string} value - new value from constructor options
+     * @return {string} id - calendar table id
+     */
+    set titleType( value ) {
+        if ( value ) {
+            this[ $titleType ] = value;
+        }
+    }
 }
 
 /**
@@ -171,6 +213,10 @@ function handleInputArguments( args ) {
                 break;
             case "id":
                 break;
+            case "parent":
+                break;
+            case "titleType":
+                break;
             default:
                 throw new Error("Неверный агрумент");
         }
@@ -181,7 +227,7 @@ function handleInputArguments( args ) {
  * Create a Table and switch period
  */
 function createTable() {
-    let container   = document.querySelector('.big-calendar');
+    let container   = document.querySelector(`.${this.parent}`);
     let table       = document.createElement('table');
     table.id        = this.id;
     table.className = `${this.period}-table`;
@@ -307,10 +353,10 @@ function createMonthTable( table, days, titleList ) {
     let tr;
 
     for (let j = 0; j < 7; j++) {
-        let td       = document.createElement('td');
-        td.innerHTML = `${titleList[1][ j ]}`;
+        let th       = document.createElement('th');
+        th.innerHTML = `${titleList[1][ j ]}`;
 
-        titleTr.appendChild( td );
+        titleTr.appendChild( th );
     }
 
     table.appendChild( titleTr );
@@ -415,6 +461,10 @@ function getTitleList() {
     let workDayList = [];
     let weekDay     = ['Воскресенье', 'Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
 
+    if ( this.titleType === 'short' ) {
+        weekDay     = ['В', 'П','В','С','Ч','П','С'];
+    }
+
     for (let i = 0; i < this.result.length; i++) {
         let day     = this.result[ i ].getDate();
         let workDay = this.result[ i ].getDay();
@@ -455,7 +505,6 @@ function getHourList() {
 
         d.setMinutes(d.getMinutes() + 30);
     }
-    console.log(timeList)
 
     return timeList;
 }
@@ -465,7 +514,7 @@ function getHourList() {
  * @return {Array}  days - array of Days from Month
  */
 function getDaysInMonth( today ) {
-    let date = today;
+    let date = new Date();
     let days = [];
 
     date.setDate( 1 );
@@ -505,7 +554,7 @@ function getDaysInMonth( today ) {
  * @return {Array} days - array of Days from Week
  */
 function getDaysInWeek( today, amount ) {
-    let date = today;
+    let date = new Date();
     let days = [];
 
     date.setDate( date.getDate() - date.getDay() );
