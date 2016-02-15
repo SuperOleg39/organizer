@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/SuperOleg39/organizer.svg?branch=master)](https://travis-ci.org/SuperOleg39/organizer)
 
+[![Dependency Status](https://david-dm.org/SuperOleg39/organizer.svg)](https://david-dm.org/SuperOleg39/organizer)
+
 Install project:
 ```
 git clone https://github.com/SuperOleg39/organizer.git
